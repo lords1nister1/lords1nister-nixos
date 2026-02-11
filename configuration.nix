@@ -1,6 +1,6 @@
 
-##Rebuild: nixswitch
-# test igg
+# Rebuild: nixswitch
+#
 
 
 { config, pkgs, ... }:
@@ -30,7 +30,6 @@
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Vienna";
-
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "de_AT.UTF-8";
@@ -49,8 +48,6 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.flatpak.enable = true;
-
-
   services.picom = {
   enable = true;
   backend = "glx";
@@ -62,10 +59,6 @@
     ];
   };
 };
-
-
- 
-
   services.xserver.xkb = {
     layout = "de";
     variant = "";
