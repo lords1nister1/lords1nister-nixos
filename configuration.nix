@@ -43,7 +43,7 @@
     LC_TIME = "de_AT.UTF-8";
   };
 
-
+  systemd.services.NetworkManager-wait-online.enable = false;
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
