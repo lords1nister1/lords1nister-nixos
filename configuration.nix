@@ -1,5 +1,7 @@
 
-# Rebuild: nixswitch
+# Rebuild: nixswitch (broken)
+# Actually rebuild: cswitch
+# 
 #
 
 
