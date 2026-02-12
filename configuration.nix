@@ -1,6 +1,5 @@
 
-# Rebuild: nixswitch (broken)
-# Actually rebuild: cswitch
+# Rebuild: nixswitch (broken) Actually rebuild: cswitch
 # 
 #
 
@@ -50,17 +49,10 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.flatpak.enable = true;
-  services.picom = {
-  enable = true;
-  backend = "glx";
-  fade = true;
-  shadow = true;
-  settings = {
-    opacity-rule = [
-      "80:class_g = 'Firefox'"
-    ];
-  };
-};
+
+
+
+
   services.xserver.xkb = {
     layout = "de";
     variant = "";
@@ -89,7 +81,9 @@
     ];
   };
 
+
   programs.firefox.enable = false;
+
 
   environment.systemPackages = with pkgs; [
   pkgs.kitty
@@ -112,8 +106,10 @@
   pkgs.picom
   pkgs.rmpc
   pkgs.git
+  pkgs.kde-rounded-corners
+  pkgs.python313Packages.cmake
 
-
+ 
 
   ];
 
