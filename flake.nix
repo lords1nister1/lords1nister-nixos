@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
   };
 
   outputs = inputs @ {
@@ -22,16 +22,8 @@
       };
       modules = [
         ./configuration.nix
-        ./modules/spicetify.nix
         ./hardware-configuration.nix
         home-manager.nixosModules.home-manager
-        spicetify-nix.nixosModules.spicetify
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.user = {
-            home.stateVersion = "25.11";
-          };
         }
       ];
     };
