@@ -113,7 +113,21 @@
   pkgs.nix-search-cli
   pkgs.iotop
   pkgs.bat
- 
+  pkgs.sl
+  pkgs.superfile
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   ];
