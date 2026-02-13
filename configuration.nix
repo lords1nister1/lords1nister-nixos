@@ -59,7 +59,7 @@
   services.desktopManager.plasma6.enable = true;
   services.flatpak.enable = true;
 
-systemd.service.NetworkManager-wait-online.enable = false;
+systemd.services.NetworkManager-wait-online.enable = false;
 
 
   services.xserver.xkb = {
