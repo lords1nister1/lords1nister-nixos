@@ -24,11 +24,21 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.device = "nodev";
+  
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
+  
+
+
+
+
+
 
   time.timeZone = "Europe/Vienna";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -44,13 +54,12 @@
     LC_TIME = "de_AT.UTF-8";
   };
 
-  systemd.services.NetworkManager-wait-online.enable = false;
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.flatpak.enable = true;
 
-
+systemd.service.NetworkManager-wait-online.enable = false;
 
 
   services.xserver.xkb = {
