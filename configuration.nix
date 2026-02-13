@@ -108,8 +108,8 @@
   pkgs.git
   pkgs.kde-rounded-corners
   pkgs.python313Packages.cmake
-
- 
+  pkgs.vim
+  pkgs.neovim 
 
   ];
 
