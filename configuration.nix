@@ -108,9 +108,24 @@
   };
 
   programs.firefox.enable = false;
+  programs.nvf = {
+   enable = true;
+   settings = {
+    vim.theme.enable = true;
+    vim.theme.name = "gruvbox";
+    vim.theme.style = "dark";
+
+    vim.language.nix.enable = true;
+   };
+  };
+
+}
 
 
-  environment.systemPackages = with pkgs; [
+
+
+
+  environment.systemPackages = [
     pkgs.kitty
     pkgs.fastfetch
     pkgs.fzf
