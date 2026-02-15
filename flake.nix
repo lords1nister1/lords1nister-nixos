@@ -1,31 +1,15 @@
 {
-  description = "Very simple flake";
+  description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    home-manager,
-    spicetify-nix,
-    ...
-  }: {
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {
-        inherit inputs;
-      };
-      modules = [
-        ./configuration.nix
-        ./hardware-configuration.nix
-        home-manager.nixosModules.home-manager
-        }
-      ];
-    };
+  outputs = { self, nixpkgs }: {
+
+    packages.x86_64-linux.hello = nixpkgs.legacyPackages.x86_64-linux.hello;
+
+    packages.x86_64-linux.default = self.packages.x86_64-linux.hello;
+
   };
 }

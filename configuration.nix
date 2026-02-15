@@ -19,10 +19,12 @@
   nixpkgs.config.allowUnfree = true;
 
   boot.loader.systemd-boot.enable = false;
-  boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = true;
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.device = "nodev";
+  boot.loader.efi.canTouchEfiVariables = true;
+  
+
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -107,10 +109,18 @@
 
   programs.firefox.enable = false;
 
-  environment.etc."xdg/kdeglobals".text = ''
-  [Sounds]
-  Enable=false
-  '';
+  programs.git = {
+   enable = true;
+   config = {
+    user.name = "lords1nister";
+    user.email = "youubepro@gmail.com";
+    init.defaultBrand = "main";
+    pull.rebase = true;
+  };
+};
+
+
+
 
 
   environment.systemPackages = with pkgs; [
@@ -133,7 +143,6 @@
     tree
     picom
     rmpc
-    git
     kde-rounded-corners
     python313Packages.cmake
     vim
@@ -145,11 +154,6 @@
     superfile
   ];
 
-  environment.etc."xdg/sounds/freedesktop/stereo/audio-volume-change.oga".source =
-    pkgs.runCommand "silent-audio-volume-change" {} ''
-      mkdir -p $out
-      touch $out/audio-volume-change.oga
-    '';
 
   system.stateVersion = "25.11";
 }
