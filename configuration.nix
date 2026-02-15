@@ -28,37 +28,50 @@
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
-  networking.networkmanager.ensureProfiles.profiles = 
-  {
-   home-wifi = {
+  networking.networkmanager.ensureProfiles.profiles = {
+  home-wifi = {
     connection = {
-     id = "ARRIS-022C";
-     type = "wifi";
-     autoconnect = true;
-  };
-
-  wifi = {
-    ssid = "ARRIS-022C";
-    mode = "infrastructure";
+      id = "ARRIS-022C";
+      type = "wifi";
+      autoconnect = true;
     };
-
-  wifi-security = {
-   key-mgmt = "wpa-psk";
-   psk = "C420252B5187245B";
+    wifi = {
+      ssid = "ARRIS-022C";
+      mode = "infrastructure";
+    };
+    wifi-security = {
+      key-mgmt = "wpa-psk";
+      psk = "C420252B5187245B";
+    };
+    ipv4.method = "auto";
+    ipv6.method = "auto";
   };
-
- ipv4 = {
-  method = "auto";
- };
-
- ipv6 = {
-  method = "auto";
-  };
- };
-
-
-
+  other-wifi = {
+    connection = {
+      id = "HUAWEI-E5180-28D7";
+      type = "wifi";
+      autoconnect = true;
+    };
+    wifi = {
+      ssid = "HUAWEI-E5180-28D7";
+      mode = "infrastructure";
+    };
+    wifi-security = {
+      key-mgmt = "wpa-psk";
+      psk = "949N31LEHH8";
+    };
+    ipv4 = {
+  method = "manual";
+  address1 = "192.168.8.104/24,192.168.8.1";
+  dns = "192.168.8.103";
 };
+
+    ipv6.method = "auto";
+  };
+ 
+
+
+  };
 
   time.timeZone = "Europe/Vienna";
 
@@ -143,6 +156,10 @@
     pkgs.sl
     pkgs.superfile
     pkgs.git
+    pkgs.gimp
+    pkgs.nixd
+
+
   ];
 
 
