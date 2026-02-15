@@ -108,18 +108,8 @@
   };
 
   programs.firefox.enable = false;
-  programs.nvf = {
-   enable = true;
-   settings = {
-    vim.theme.enable = true;
-    vim.theme.name = "gruvbox";
-    vim.theme.style = "dark";
 
-    vim.language.nix.enable = true;
-   };
-  };
 
-}
 
 
 
@@ -130,7 +120,7 @@
     pkgs.fastfetch
     pkgs.fzf
     pkgs.cava
-    ppkgs.gnome-secrets
+    pkgs.gnome-secrets
     pkgs.neofetch
     pkgs.starship
     pkgs.clock-rs
@@ -152,6 +142,7 @@
     pkgs.bat
     pkgs.sl
     pkgs.superfile
+    pkgs.git
   ];
 
 
