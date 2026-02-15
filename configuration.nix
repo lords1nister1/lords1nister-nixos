@@ -1,13 +1,5 @@
 { config, pkgs, ... }:
 
-
-  environment.etc."xdg/sounds/freedesktop/stereo/audio-volume-change.oga".source =
-    pkgs.runCommand "silent-audio-volume-change" {} ''
-      mkdir -p $out
-      touch $out/audio-volume-change.oga
-    '';
-
-
 {
   imports = [
     ./hardware-configuration.nix
@@ -98,9 +90,6 @@
   services.printing.enable = true;
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
-
-
-
   services.pipewire.enable = true;
   services.pipewire.alsa.enable = true;
   services.pipewire.alsa.support32Bit = true;
@@ -155,6 +144,12 @@
     sl
     superfile
   ];
+
+  environment.etc."xdg/sounds/freedesktop/stereo/audio-volume-change.oga".source =
+    pkgs.runCommand "silent-audio-volume-change" {} ''
+      mkdir -p $out
+      touch $out/audio-volume-change.oga
+    '';
 
   system.stateVersion = "25.11";
 }
