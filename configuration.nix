@@ -109,49 +109,34 @@
 
   programs.firefox.enable = false;
 
-  programs.git = {
-   enable = true;
-   config = {
-    user.name = "lords1nister";
-    user.email = "youubepro@gmail.com";
-    init.defaultBrand = "main";
-    pull.rebase = true;
-  };
-};
-
-
-
-
 
   environment.systemPackages = with pkgs; [
-    kitty
-    fastfetch
-    fzf
-    cava
-    gnome-secrets
-    neofetch
-    starship
-    clock-rs
-    peaclock
-    btop
-    htop
-    pipes
-    pipes-rs
-    asciiquarium-transparent
-    eza
-    lm_sensors
-    tree
-    picom
-    rmpc
-    kde-rounded-corners
-    python313Packages.cmake
-    vim
-    neovim
-    nix-search-cli
-    iotop
-    bat
-    sl
-    superfile
+    pkgs.kitty
+    pkgs.fastfetch
+    pkgs.fzf
+    pkgs.cava
+    ppkgs.gnome-secrets
+    pkgs.neofetch
+    pkgs.starship
+    pkgs.clock-rs
+    pkgs.peaclock
+    pkgs.btop
+    pkgs.htop
+    pkgs.pipes
+    pkgs.pipes-rs
+    pkgs.asciiquarium-transparent
+    pkgs.eza
+    pkgs.lm_sensors
+    pkgs.tree
+    pkgs.kde-rounded-corners
+    pkgs.python313Packages.cmake
+    pkgs.vim
+    pkgs.neovim
+    pkgs.nix-search-cli
+    pkgs.iotop
+    pkgs.bat
+    pkgs.sl
+    pkgs.superfile
   ];
 
 
