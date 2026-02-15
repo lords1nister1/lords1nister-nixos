@@ -1,5 +1,13 @@
 { config, pkgs, ... }:
 
+
+  environment.etc."xdg/sounds/freedesktop/stereo/audio-volume-change.oga".source =
+    pkgs.runCommand "silent-audio-volume-change" {} ''
+      mkdir -p $out
+      touch $out/audio-volume-change.oga
+    '';
+
+
 {
   imports = [
     ./hardware-configuration.nix
@@ -77,7 +85,7 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.flatpak.enable = true;
-
+  boot.blacklistedKernelModules = [ "pcspkr" ];
   systemd.services.NetworkManager-wait-online.enable = false;
 
   services.xserver.xkb = {
@@ -88,16 +96,16 @@
   console.keyMap = "de";
 
   services.printing.enable = true;
-
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
+
+
+  services.pipewire.enable = true;
+  services.pipewire.alsa.enable = true;
+  services.pipewire.alsa.support32Bit = true;
+  services.pipewire.pulse.enable = true;
+
 
   users.users.user = {
     isNormalUser = true;
@@ -109,6 +117,12 @@
   };
 
   programs.firefox.enable = false;
+
+  environment.etc."xdg/kdeglobals".text = ''
+  [Sounds]
+  Enable=false
+  '';
+
 
   environment.systemPackages = with pkgs; [
     kitty
