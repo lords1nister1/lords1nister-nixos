@@ -1,9 +1,11 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
+   imports = [
     ./hardware-configuration.nix
   ];
+
+
 
   nix = {
     settings = {
@@ -24,7 +26,6 @@
   boot.loader.grub.device = "nodev";
   boot.loader.efi.canTouchEfiVariables = true;
   
-
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -122,6 +123,8 @@
 
   programs.firefox.enable = false;
 
+
+ 
 
 
 
