@@ -1,10 +1,24 @@
-{ pkgs, lib, ... }
+{ pkgs, lib, ... }:
 
 {
- vim.theme.enable = true;
- vim.theme.name = "gruvbox";
- vim.theme.style= "dark";
+ vim = {
+  theme = {
+   enable = true;
+   name = "gruvbox";
+   style = "dark";
+  };
 
- vim.language.nix.enable = true;
+  statusLine.lualine.enable = true;
+  telescope.enable = true;
+  autocomplete.nvim-cmp.enable = true;
 
+  languages = {
+   enableLSP = true;
+   enableTreesitter = true;
+
+   nix.enable = true;
+   ts.enable = true;
+   rust.enable = true;
+    };
+  };
 }
