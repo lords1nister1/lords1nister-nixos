@@ -152,7 +152,7 @@
     pkgs.kde-rounded-corners
     pkgs.python313Packages.cmake
     pkgs.vim
-    # pkgs.neovim
+#    pkgs.neovim
     pkgs.nix-search-cli
     pkgs.iotop
     pkgs.bat

@@ -10,9 +10,9 @@
   system = "x86_64-linux";
   pkgs = import nixpkgs {
     inherit system;
-    config.allowUnfree = true;  # Enables unfree for all pkgs derived here
+    config.allowUnfree = true; 
   };
-  spicetify = spicetify-nix.lib.mkSpicetify pkgs { };  # Now uses unfree-enabled pkgs
+  spicetify = spicetify-nix.lib.mkSpicetify pkgs { };  
 
   neovimPkg = (nvf.lib.neovimConfiguration {
     inherit pkgs;
