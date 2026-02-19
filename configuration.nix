@@ -69,8 +69,6 @@
 
     ipv6.method = "auto";
   };
- 
-
 
   };
 
@@ -123,13 +121,6 @@
 
   programs.firefox.enable = false;
 
-  
- 
-
-
-
-
-
 
   environment.systemPackages = [
     pkgs.kitty
@@ -152,7 +143,7 @@
     pkgs.kde-rounded-corners
     pkgs.python313Packages.cmake
     pkgs.vim
-#    pkgs.neovim
+#   pkgs.neovim
     pkgs.nix-search-cli
     pkgs.iotop
     pkgs.bat
