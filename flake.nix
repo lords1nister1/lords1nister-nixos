@@ -16,7 +16,7 @@
 
   neovimPkg = (nvf.lib.neovimConfiguration {
     inherit pkgs;
-    modules = [ ./nvf-configuration.nix ];
+   # modules = [ ./nvf-configuration.nix ];
   }).neovim;
   in 
   {
