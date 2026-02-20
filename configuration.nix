@@ -140,7 +140,7 @@
     pkgs.eza
     pkgs.lm_sensors
     pkgs.tree
-    pkgs.kde-rounded-corners
+#   pkgs.kde-rounded-corners
     pkgs.python313Packages.cmake
     pkgs.vim
 #   pkgs.neovim
