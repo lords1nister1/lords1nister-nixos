@@ -63,7 +63,7 @@
     };
     ipv4 = {
   method = "manual";
-  address1 = "192.168.8.104/24,192.168.8.1";
+  address1 = "192.168.8.107/24,192.168.8.1";
   dns = "192.168.8.103";
 };
 
@@ -131,7 +131,6 @@
     pkgs.neofetch
     pkgs.starship
     pkgs.clock-rs
-    pkgs.peaclock
     pkgs.btop
     pkgs.htop
     pkgs.pipes
@@ -140,10 +139,8 @@
     pkgs.eza
     pkgs.lm_sensors
     pkgs.tree
-#   pkgs.kde-rounded-corners
     pkgs.python313Packages.cmake
     pkgs.vim
-#   pkgs.neovim
     pkgs.nix-search-cli
     pkgs.iotop
     pkgs.bat
@@ -152,6 +149,11 @@
     pkgs.git
     pkgs.gimp
     pkgs.nixd
+    pkgs.rustc
+    pkgs.cargo
+    pkgs.pkg-config
+    pkgs.ncurses
+    pkgs.peaclock
 
 
   ];
