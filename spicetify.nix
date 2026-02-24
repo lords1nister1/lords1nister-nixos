@@ -1,5 +1,5 @@
-# For NixOS: spicetify-nix.nixosModules.spicetify
-# For Home Manager: spicetify-nix.homeManagerModules.spicetify
+# This module is currently not being used.
+
 
 { pkgs, inputs, ... }:
 let
