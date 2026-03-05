@@ -5,8 +5,10 @@
    autopairs.nvim-autopairs.enable = true;
     theme = {
       enable = true;
-      name = "gruvbox";
-      style = "dark";
+      name = "github";
+      style = "dark_tritanopia";
+      transparent = true;
+
     };
 
     statusline.lualine.enable = true;

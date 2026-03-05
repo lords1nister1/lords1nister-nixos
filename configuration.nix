@@ -4,12 +4,7 @@
    imports = [
     ./hardware-configuration.nix
   ];
-
-
-
-
-
-        
+    
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
@@ -144,6 +139,7 @@
     pkgs.tree
     pkgs.python313Packages.cmake
     pkgs.vim
+#   pkgs.neovim
     pkgs.nix-search-cli
     pkgs.iotop
     pkgs.bat
