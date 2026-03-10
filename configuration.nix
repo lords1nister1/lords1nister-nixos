@@ -1,4 +1,10 @@
 { config, pkgs, ... }:
+# very important for later
+#
+#
+#  /nix/store/frcw0mpyyj1q428zkhk11xc5l7jwcd6n-kwin-6.6.0/lib/qt-6/qml/org/kde/kwin/private/effects/WindowHeapDelegate.qml
+# KWIN overview icon
+
 
 {
    imports = [
@@ -111,6 +117,17 @@
   environment.sessionVariables = {
   XDG_MENU_PREFIX = "plasma-";
 };
+
+  
+ nixpkgs.overlays = [
+    (final: prev: {
+      kwin = prev.kwin.overrideAttrs (old: {
+        patches = (old.patches or []) ++ [
+          /home/user/nix-patches/kwin-hide-overview-icon.patch
+        ];
+      });
+    })
+  ];
 
   users.users.user = {
     isNormalUser = true;
