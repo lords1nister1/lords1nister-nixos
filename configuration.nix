@@ -108,6 +108,10 @@
   services.pipewire.pulse.enable = true;
 
 
+  environment.sessionVariables = {
+  XDG_MENU_PREFIX = "plasma-";
+};
+
   users.users.user = {
     isNormalUser = true;
     description = "user";
@@ -121,6 +125,8 @@
 
 
   environment.systemPackages = [
+    
+    pkgs.kdePackages.kmenuedit
     pkgs.kitty
     pkgs.fastfetch
     pkgs.fzf
@@ -139,7 +145,7 @@
     pkgs.tree
     pkgs.python313Packages.cmake
     pkgs.vim
-#   pkgs.neovim
+#   pkgs.neovim (switched to nvf)
     pkgs.nix-search-cli
     pkgs.iotop
     pkgs.bat
@@ -153,7 +159,7 @@
     pkgs.pkg-config
     pkgs.ncurses
     pkgs.peaclock
-
+    pkgs.s-tui
 
   ];
 
