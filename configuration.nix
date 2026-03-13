@@ -2,8 +2,9 @@
 # very important for later
 #
 #
-#  /nix/store/frcw0mpyyj1q428zkhk11xc5l7jwcd6n-kwin-6.6.0/lib/qt-6/qml/org/kde/kwin/private/effects/WindowHeapDelegate.qml
-# KWIN overview icon
+# KWin effects: /nix/store/frcw0mpyyj1q428zkhk11xc5l7jwcd6n-kwin-6.6.0/lib/qt-6/qml/org/kde/kwin/private/effects/WindowHeapDelegate.qml
+#
+
 
 
 {
@@ -119,15 +120,6 @@
 };
 
   
- nixpkgs.overlays = [
-    (final: prev: {
-      kwin = prev.kwin.overrideAttrs (old: {
-        patches = (old.patches or []) ++ [
-          /home/user/nix-patches/kwin-hide-overview-icon.patch
-        ];
-      });
-    })
-  ];
 
   users.users.user = {
     isNormalUser = true;
@@ -138,9 +130,8 @@
     ];
   };
 
+  programs.nix-index-database.comma.enable = true;
   programs.firefox.enable = false;
-
-
   environment.systemPackages = [
     
     pkgs.kdePackages.kmenuedit

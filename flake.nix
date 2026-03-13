@@ -4,9 +4,14 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nvf.url = "github:notashelf/nvf";
+
+    nix-index-database = {
+     url = "github:nix-community/nix-index-database";
+     inputs.nixpkgs.follows = "nixpkgs";
+     };
   };
 
-  outputs = { self, nixpkgs, nvf, ... }:
+  outputs = { self, nixpkgs, nvf, nix-index-database, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -16,6 +21,7 @@
         modules = [
           ./hardware-configuration.nix
           ./configuration.nix
+          nix-index-database.nixosModules.default
           nvf.nixosModules.default
 
           ({
