@@ -37,7 +37,6 @@
         ];
       };
 
-      # Optional — build NVF as standalone package
       packages.${system}.nvf = nvf.lib.neovimConfiguration {
         pkgs = pkgs;
         modules = [ ./nvf-configuration.nix ];

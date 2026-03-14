@@ -14,11 +14,13 @@
     languages = {
       enableLSP = true;
       enableTreesitter = true;
-      nix = { enable = true; lsp.server = "nixd"; };
+      nix = {
+        enable = true;
+        lsp.server = "nixd";
+      };
       ts.enable = true;
       rust.enable = true;
     };
-
     extraPlugins.presence-nvim = {
       package = pkgs.vimUtils.buildVimPlugin {
         pname = "presence.nvim";
@@ -33,11 +35,17 @@
       setup = ''
         require("presence").setup({
           auto_update = true,
+          file_assets = {},
           show_time = true,
           editing_text = "Editing %s",
-          client_id = "793271441293967371",
+          file_explorer_text = "Browsing %s",
+          git_commit_text = "Committing changes",
+          plugin_manager_text = "Managing plugins",
+          reading_text = "Reading %s",
+          workspace_text = "Working on %s",
+          line_number_text = "Line %s out of %s",
         })
       '';
     };
   };
-}   
+}
