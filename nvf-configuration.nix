@@ -1,6 +1,35 @@
 { pkgs, lib, ... }:
 {
   vim = {
+    options = {
+      clipboard = "unnamedplus";
+    };
+    clipboard = {
+      enable = true;
+      providers.wl-copy.enable = true;
+      registers = "unnamedplus";
+    };
+    keymaps = [
+      {
+        key = "<leader>y";
+        mode = ["v"];
+        action = "\"+y";
+        silent = true;
+      }
+      {
+        key = "<leader>Y";
+        mode = ["n"];
+        action = "\"+yy";
+        silent = true;
+      }
+      {
+        key = "<C-c>";
+        mode = ["v"];
+        action = "\"+y";
+        silent = true;
+        noremap = true;
+      }
+    ];
     autopairs.nvim-autopairs.enable = true;
     theme = {
       enable = true;
