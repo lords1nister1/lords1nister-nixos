@@ -5,8 +5,6 @@
 # KWin effects: /nix/store/frcw0mpyyj1q428zkhk11xc5l7jwcd6n-kwin-6.6.0/lib/qt-6/qml/org/kde/kwin/private/effects/WindowHeapDelegate.qml
 #
 
-
-
 {
    imports = [
     ./hardware-configuration.nix
@@ -153,7 +151,6 @@
     pkgs.tree
     pkgs.python313Packages.cmake
     pkgs.vim
-#   pkgs.neovim (switched to nvf)
     pkgs.nix-search-cli
     pkgs.iotop
     pkgs.bat
@@ -168,6 +165,12 @@
     pkgs.ncurses
     pkgs.peaclock
     pkgs.s-tui
+    pkgs.vlc
+
+
+#   pkgs.neovim (switched to nvf)
+#
+#
 
   ];
 
