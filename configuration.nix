@@ -166,7 +166,8 @@
     pkgs.peaclock
     pkgs.s-tui
     pkgs.vlc
-
+    pkgs.kdePackages.kirigami
+    pkgs.rpi-imager
 
 #   pkgs.neovim (switched to nvf)
 #
