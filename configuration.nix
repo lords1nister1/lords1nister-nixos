@@ -1,8 +1,5 @@
 { config, pkgs, ... }:
 
-# directories
-#
-# KWin effects: /nix/store/frcw0mpyyj1q428zkhk11xc5l7jwcd6n-kwin-6.6.0/lib/qt-6/qml/org/kde/kwin/private/effects/WindowHeapDelegate.qml
 #
 
 {
