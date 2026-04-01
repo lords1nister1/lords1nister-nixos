@@ -87,8 +87,6 @@
     LC_TIME = "de_AT.UTF-8";
   };
 
-  services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.flatpak.enable = true;
   boot.blacklistedKernelModules = [ "pcspkr" ];
@@ -99,37 +97,35 @@
     variant = "";
   };
 
+  services.xserver = {
+   enable = true;
+   displayManager.sddm.enable = true;
+   windowManager.i3.enable = true;
+   desktopManager.xterm.enable = false;
+   displayManager.defaultSession = "none+i3";
+  };
+
   console.keyMap = "de";
 
   services.printing.enable = true;
-  services.pulseaudio.enable = false;
+  services.pulseaudio.enable = true;
   security.rtkit.enable = true;
-  services.pipewire.enable = true;
-  services.pipewire.alsa.enable = true;
-  services.pipewire.alsa.support32Bit = true;
-  services.pipewire.pulse.enable = true;
-
-
-  environment.sessionVariables = {
-  XDG_MENU_PREFIX = "plasma-";
-};
-
+  services.pipewire.enable = false;
+  services.logind.settings.Login.HandlePowerKey = "poweroff";
   
 
   users.users.user = {
     isNormalUser = true;
     description = "user";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
+    extraGroups = [ "networkmanager" "wheel" "input"];
+    
   };
 
+  programs.light.enable = true;
   programs.nix-index-database.comma.enable = true;
   programs.firefox.enable = false;
   environment.systemPackages = [
     
-    pkgs.kdePackages.kmenuedit
     pkgs.kitty
     pkgs.fastfetch
     pkgs.fzf
@@ -163,10 +159,29 @@
     pkgs.peaclock
     pkgs.s-tui
     pkgs.vlc
-    pkgs.kdePackages.kirigami
     pkgs.rpi-imager
+    pkgs.spotube
+    pkgs.dmenu
+    pkgs.brightnessctl
+    pkgs.pavucontrol
+    pkgs.pulseaudio
+    pkgs.flameshot
+    pkgs.picom
+    pkgs.i3status
+    pkgs.networkmanagerapplet
+    pkgs.xfce.xfce4-power-manager
+    pkgs.dunst
+    pkgs.pamixer
+    pkgs.libnotify
+    pkgs.playerctl
+    pkgs.libinput-gestures
+    pkgs.libxcvt.out
+    pkgs.feh
+    pkgs.xclip
+    pkgs.rofi
+    pkgs.arandr
+    
 
-#   pkgs.neovim (switched to nvf)
 #
 #
 
