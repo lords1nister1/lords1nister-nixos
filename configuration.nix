@@ -66,9 +66,9 @@
   address1 = "192.168.8.107/24,192.168.8.1";
   dns = "192.168.8.103";
 };
-
     ipv6.method = "auto";
   };
+
 
   };
 
@@ -108,9 +108,9 @@
   console.keyMap = "de";
 
   services.printing.enable = true;
-  services.pulseaudio.enable = true;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire.enable = false;
+  services.pipewire.enable = true;
   services.logind.settings.Login.HandlePowerKey = "poweroff";
   
 
@@ -120,19 +120,24 @@
     extraGroups = [ "networkmanager" "wheel" "input"];
     
   };
-
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
+  programs.appimage.package = pkgs.appimage-run.override {
+    extraPkgs = pkgs: [ pkgs.ffmpeg pkgs.imagemagick ];
+  }
+  ;
   programs.light.enable = true;
   programs.nix-index-database.comma.enable = true;
   programs.firefox.enable = false;
   environment.systemPackages = [
     
     pkgs.kitty
+    pkgs.brave
     pkgs.fastfetch
     pkgs.fzf
     pkgs.cava
     pkgs.gnome-secrets
     pkgs.neofetch
-    pkgs.starship
     pkgs.clock-rs
     pkgs.btop
     pkgs.htop
@@ -159,8 +164,6 @@
     pkgs.peaclock
     pkgs.s-tui
     pkgs.vlc
-    pkgs.rpi-imager
-    pkgs.spotube
     pkgs.dmenu
     pkgs.brightnessctl
     pkgs.pavucontrol
@@ -180,6 +183,8 @@
     pkgs.xclip
     pkgs.rofi
     pkgs.arandr
+    pkgs.cool-retro-term
+    pkgs.appimage-run
     
 
 #
