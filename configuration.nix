@@ -61,12 +61,8 @@
       key-mgmt = "wpa-psk";
       psk = "949N31LEHH8";
     };
-    ipv4 = {
-  method = "manual";
-  address1 = "192.168.8.107/24,192.168.8.1";
-  dns = "192.168.8.103";
-};
-    ipv6.method = "auto";
+    ipv4.method = "auto";
+   ipv6.method = "auto";
   };
 
 
@@ -106,7 +102,7 @@
   };
 
   console.keyMap = "de";
-
+  services.upower.enable = true;
   services.printing.enable = true;
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -126,6 +122,8 @@
     extraPkgs = pkgs: [ pkgs.ffmpeg pkgs.imagemagick ];
   }
   ;
+
+
   programs.light.enable = true;
   programs.nix-index-database.comma.enable = true;
   programs.firefox.enable = false;
@@ -146,6 +144,7 @@
     pkgs.asciiquarium-transparent
     pkgs.eza
     pkgs.lm_sensors
+    pkgs.spotube
     pkgs.tree
     pkgs.python313Packages.cmake
     pkgs.vim
@@ -172,7 +171,6 @@
     pkgs.picom
     pkgs.i3status
     pkgs.networkmanagerapplet
-    pkgs.xfce.xfce4-power-manager
     pkgs.dunst
     pkgs.pamixer
     pkgs.libnotify
@@ -185,6 +183,8 @@
     pkgs.arandr
     pkgs.cool-retro-term
     pkgs.appimage-run
+    pkgs.gparted
+    pkgs.jq
     
 
 #
