@@ -126,7 +126,7 @@
 
   programs.light.enable = true;
   programs.nix-index-database.comma.enable = true;
-  programs.firefox.enable = false;
+  programs.firefox.enable = true;
   environment.systemPackages = [
     
     pkgs.kitty
