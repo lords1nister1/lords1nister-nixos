@@ -183,9 +183,9 @@
     pkgs.arandr
     pkgs.cool-retro-term
     pkgs.appimage-run
-    pkgs.gparted
     pkgs.jq
-    
+    pkgs.tenki
+    pkgs.gping
 
 #
 #
