@@ -1,7 +1,7 @@
 { pkgs ? import <nixpkgs> {} }:
 
 pkgs.stdenv.mkDerivation rec {
-  pname = "vinz";
+  name = "vinz";
 
   src = pkgs.fetchFromGitHub {
     owner = "vinz-ux";
