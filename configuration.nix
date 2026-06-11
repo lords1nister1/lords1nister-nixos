@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib,  ... }:
 
-#
-
+ let 
+  vinz = pkgs.callPackage ./default.nix {};
+ in 
 {
    imports = [
     ./hardware-configuration.nix
@@ -127,6 +128,7 @@
   programs.light.enable = true;
   programs.nix-index-database.comma.enable = true;
   programs.firefox.enable = true;
+
   environment.systemPackages = [
     
     pkgs.kitty
@@ -186,7 +188,9 @@
     pkgs.jq
     pkgs.tenki
     pkgs.gping
-
+    vinz
+    pkgs.kdePackages.kdenlive
+ 
 #
 #
 

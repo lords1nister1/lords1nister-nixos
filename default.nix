@@ -1,35 +1,44 @@
-{ pkgs ? import <nixpkgs> {} }:
+{
+  pkgs ? import <nixpkgs> { },
+  lib ? pkgs.lib,
+  stdenv ? pkgs.stdenv,
+  fetchFromGitHub ? pkgs.fetchFromGitHub,
+}:
 
-pkgs.stdenv.mkDerivation rec {
-  name = "vinz";
+stdenv.mkDerivation {
+  pname = "vinz";
+  version = "0-unstable-2026-04-25";
 
-  src = pkgs.fetchFromGitHub {
+  src = fetchFromGitHub {
     owner = "vinz-ux";
     repo = "VinZ";
     rev = "main";
-    sha256 = "sha256-CKZvxWBlMx7Ubcs5XqoIJ3+4A3N++Q0UTXDjNHnAoNU=";
+    hash = "sha256-CKZvxWBlMx7Ubcs5XqoIJ3+4A3N++Q0UTXDjNHnAoNU=";
   };
 
-  nativeBuildInputs = [ 
-    pkgs.makeWrapper 
-  ];
+  buildPhase = ''
+    runHook preBuild
+    make
+    runHook postBuild
+  '';
 
-  buildInputs = [ ];
-
-        installPhase = ''
+  installPhase = ''
     runHook preInstall
-    
+
     mkdir -p $out/bin
-    cp vinz $out/bin/
+    cp vinz $out/bin/vinz
+    ln -s $out/bin/vinz $out/bin/vz
 
     runHook postInstall
   '';
 
-  meta = with pkgs.lib; {
-    description = "VinZ";
+  meta = {
+    description = "A highly interactive, true-color, 3D raymarching, procedural graphics engine for the terminal";
     homepage = "https://github.com";
-    license = licenses.gpl3Only;
-    platforms = platforms.unix;
+    license = lib.licenses.gpl3Only;
+    maintainers = with lib.maintainers; [ lords1nister1 ];
+    platforms = lib.platforms.unix;
+    mainProgram = "vinz";
   };
 }
 
