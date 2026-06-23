@@ -2,12 +2,24 @@
 
  let 
   vinz = pkgs.callPackage ./default.nix {};
+  sddm-theme = pkgs.callPackage ./sddm-theme.nix {
+   wallpaper = ./pkrqze.png;
+    };
  in 
 {
    imports = [
     ./hardware-configuration.nix
   ];
-    
+   
+  programs.bash.shellAliases = {
+   ls = "eza --icons";
+   rb = "time sudo nixos-rebuild switch --flake .#nixos";
+   gens = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
+   cg = "time sudo nix-collect-garbage";
+   sf = "superfile";
+   n = "cd ~/nixos";
+        };
+
   nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
@@ -88,7 +100,41 @@
   services.flatpak.enable = true;
   boot.blacklistedKernelModules = [ "pcspkr" ];
   systemd.services.NetworkManager-wait-online.enable = false;
+  services.auto-cpufreq.enable = false;
+  services.tlp.enable = false;
+  powerManagement.powertop.enable = false;
+  powerManagement.cpuFreqGovernor = "performance";
+  services.auto-cpufreq.settings = {
+    charger = {
+      governor = "performance";
+      turbo = "always";
+    };
+  };
 
+
+  services.picom = {
+    enable = true;
+    package = pkgs.picom-pijulius;
+    backend = "glx";
+    vSync = true;
+
+    settings = {
+      animations = true;
+      animation-stiffness = 120.0;
+      animation-dampening = 14.0;
+      animation-clamping = false;
+      
+      animation-for-open-window = "wobbly";
+      animation-for-unmap-window = "squeeze";
+      animation-for-transient-window = "wobbly";
+
+      animation-exclude = [
+        "class_g = 'i3-frame'"
+        "window_type = 'dock'"
+        "window_type = 'desktop'"
+      ];
+    };
+  };
   services.xserver.xkb = {
     layout = "de";
     variant = "";
@@ -96,11 +142,15 @@
 
   services.xserver = {
    enable = true;
-   displayManager.sddm.enable = true;
    windowManager.i3.enable = true;
    desktopManager.xterm.enable = false;
    displayManager.defaultSession = "none+i3";
   };
+  services.displayManager.sddm = {
+    enable = true;
+    package = lib.mkForce pkgs.kdePackages.sddm;
+    theme = "blurry";
+     };
 
   console.keyMap = "de";
   services.upower.enable = true;
@@ -189,6 +239,7 @@
     pkgs.tenki
     pkgs.gping
     vinz
+    sddm-theme
     pkgs.kdePackages.kdenlive
  
 #
